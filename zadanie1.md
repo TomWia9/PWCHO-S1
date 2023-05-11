@@ -2,6 +2,8 @@
 ## Programowanie Full-Stack w chmurze obliczeniowej - Sprawozdanie 1
 ### *Aplikacja została napisana z wykorzystaniem języka C#*
 
+## Zadania obowiązkowe:
+
 ### 1. a) Logi z informacjami o dacie uruchomienia, imieniu i nazwisku autora serwera oraz porcie TCP, na którym serwer nasłuchuje na zgłoszenia klienta.
 #### Zrzut ekranu logów:
 ![image](https://github.com/TomWia9/PWCHO-S1/assets/43671686/efe26fb2-1321-4444-8068-82895f102723)
@@ -19,3 +21,19 @@
 ![image](https://github.com/TomWia9/PWCHO-S1/assets/43671686/dbdb6ad6-8647-4f78-b238-61e6ad12578f)
 #### Kod źródłowy głównego widoku (index.cshtml)
 ![image](https://github.com/TomWia9/PWCHO-S1/assets/43671686/d003cf49-95ab-420c-84f4-2509dd9047f6)
+
+### 2. Plik Dockerfile
+#### Link do pliku: [Dockerfile](./Dockerfile)
+#### Zrzut ekranu pliku Dockerfile:
+![image](https://github.com/TomWia9/PWCHO-S1/assets/43671686/25cde9e9-50ec-4b04-8fe3-7e85661085e4)
+
+### 3. Polecenia Docker
+#### a) Zbudowanie opracowanego obrazu kontenera:
+#### b) Uruchomienie kontenera na podstawie zbudowanego obrazu:
+#### c) Sposób uzyskania informacji, które wygenerował serwer w trakcie uruchamiana kontenera (logi):
+#### d) Sprawdzenie, ile warstw posiada zbudowany obraz:
+
+## Zadania nieobowiązkowe:
+
+
+
