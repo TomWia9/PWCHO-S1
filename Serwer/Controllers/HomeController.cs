@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Net;
+using System.Net.Sockets;
 using Microsoft.AspNetCore.Mvc;
 using Serwer.Models;
 
@@ -17,7 +18,13 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         var clientIpAddress = GetClientIpAddress();
+        //Console.WriteLine("Ip address: " + clientIpAddress);
+
         var clientTimezone = GetClientTimezone(clientIpAddress);
+        //Console.WriteLine("Timezone: " + clientTimezone);
+        
+        var clientDate = GetClientDate(clientTimezone);
+        //Console.WriteLine("Date: " + clientDate);
 
         ViewData["Title"] = "Server app";
         ViewData["ClientIpAddress"] = clientIpAddress == "::1" ? clientIpAddress + " (localhost)" : clientIpAddress;
@@ -37,9 +44,11 @@ public class HomeController : Controller
     ///     Gets client IP address
     /// </summary>
     /// <returns>The ip address</returns>
-    private string GetClientIpAddress()
+    private static string GetClientIpAddress()
     {
-        return _httpContextAccessor.HttpContext?.Connection?.RemoteIpAddress?.ToString()!;
+        var name = Dns.GetHostName();
+        var ip = Dns.GetHostEntry(name).AddressList.FirstOrDefault(x => x.AddressFamily == AddressFamily.InterNetwork);
+        return ip.ToString();
     }
 
     /// <summary>
@@ -54,7 +63,7 @@ public class HomeController : Controller
         {
             return TimeZoneInfo.Local.StandardName;
         }
-        
+
         //gets timezone by ip address from remote api
         var apiUrl = $"https://ipapi.co/{clientIpAddress}/timezone";
         var request = WebRequest.Create(apiUrl);
@@ -73,13 +82,20 @@ public class HomeController : Controller
     /// <returns>The client date and hour for his timezone.</returns>
     private static string GetClientDate(string timezone)
     {
-        //sets the timezone we want to get the current date and time for
-        var timeZone = TimeZoneInfo.FindSystemTimeZoneById(timezone);
+        try
+        {
+            //sets the timezone we want to get the current date and time for
+            var timeZone = TimeZoneInfo.FindSystemTimeZoneById(timezone);
 
-        //gets the current date and time for the specified timezone
-        var currentDate = TimeZoneInfo.ConvertTime(DateTimeOffset.UtcNow, timeZone);
+            //gets the current date and time for the specified timezone
+            var currentDate = TimeZoneInfo.ConvertTime(DateTimeOffset.UtcNow, timeZone);
 
-        //returns the current date and time for the specified timezone
-        return currentDate.ToString();
+            //returns the current date and time for the specified timezone
+            return currentDate.ToString();
+        }
+        catch (Exception e)
+        {
+            return "The current date cannot be determined from an undefined time zone. The client's IP address is probably private.";
+        }
     }
 }
