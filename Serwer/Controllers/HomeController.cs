@@ -8,36 +8,17 @@ namespace Serwer.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly IHttpContextAccessor _httpContextAccessor;
-
-    public HomeController(IHttpContextAccessor httpContextAccessor)
-    {
-        _httpContextAccessor = httpContextAccessor;
-    }
-
     public IActionResult Index()
     {
         var clientIpAddress = GetClientIpAddress();
-        //Console.WriteLine("Ip address: " + clientIpAddress);
-
         var clientTimezone = GetClientTimezone(clientIpAddress);
-        //Console.WriteLine("Timezone: " + clientTimezone);
         
-        var clientDate = GetClientDate(clientTimezone);
-        //Console.WriteLine("Date: " + clientDate);
-
         ViewData["Title"] = "Server app";
         ViewData["ClientIpAddress"] = clientIpAddress == "::1" ? clientIpAddress + " (localhost)" : clientIpAddress;
         ViewData["ClientTimezone"] = clientTimezone;
         ViewData["ClientDate"] = GetClientDate(clientTimezone);
 
         return View();
-    }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
     /// <summary>
@@ -63,7 +44,7 @@ public class HomeController : Controller
         {
             return TimeZoneInfo.Local.StandardName;
         }
-
+        
         //gets timezone by ip address from remote api
         var apiUrl = $"https://ipapi.co/{clientIpAddress}/timezone";
         var request = WebRequest.Create(apiUrl);
@@ -97,5 +78,11 @@ public class HomeController : Controller
         {
             return "The current date cannot be determined from an undefined time zone. The client's IP address is probably private.";
         }
+    }
+    
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }
