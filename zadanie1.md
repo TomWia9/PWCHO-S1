@@ -33,18 +33,26 @@
 ##### Aby zbudować opracowany obraz kontenera należy przejść do katalogu zawierającego plik Dockerfile i wykonać polecenie:
   > docker build -t nazwa_obrazu .
 ##### Zrzut ekranu z przykładem budowania obrazu:
-  
+![image](https://github.com/TomWia9/PWCHO-S1/assets/43671686/06fc7b90-16ef-4820-bf8d-00ae67f31039)
+
 #### b) Uruchomienie kontenera na podstawie zbudowanego obrazu:
 ##### Aby uruchomić kontener na podstawie zbudowanego obrazu należy wykonać polecenie:
   > docker run -p port_hosta:port_kontenera nazwa_obrazu
-  
+##### Zrzut ekranu z przykładem uruchomienia kontenera:
+![image](https://github.com/TomWia9/PWCHO-S1/assets/43671686/8dad7d0c-a5d5-4003-bbb9-fa795f1189ed)
+
 #### c) Sposób uzyskania informacji, które wygenerował serwer w trakcie uruchamiana kontenera (logi):
 ##### Aby uzyskać informacje wygenerowane przez serwer w trakcie uruchamiania kontenera, należy wykonać polecenie:
   > docker logs nazwa_kontenera
+##### Zrzut ekranu z przykładem uzyskania informacji wygenerowanych przez serwer:
+![image](https://github.com/TomWia9/PWCHO-S1/assets/43671686/19f8111d-48e6-4a49-8d51-08fb5fd6a8e2)
 
 #### d) Sprawdzenie, ile warstw posiada zbudowany obraz:
 ##### Aby sprawdzić ile warstw posiada zbudowany obraz, należy wykonać polecenie:
   > docker history nazwa_obrazu
+##### Zrzut ekranu z przykładem sprawdzenia ile warstw posiada zbudowany obraz:
+![image](https://github.com/TomWia9/PWCHO-S1/assets/43671686/8602e0e4-8810-495b-b367-a9fcd5651b01)
+
   
 ## Zadania nieobowiązkowe:
 
