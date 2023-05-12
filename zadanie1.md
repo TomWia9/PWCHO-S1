@@ -52,9 +52,3 @@
   > docker history nazwa_obrazu
 ##### Zrzut ekranu z przykładem sprawdzenia ile warstw posiada zbudowany obraz:
 ![image](https://github.com/TomWia9/PWCHO-S1/assets/43671686/8602e0e4-8810-495b-b367-a9fcd5651b01)
-
-  
-## Zadania nieobowiązkowe:
-
-
-
