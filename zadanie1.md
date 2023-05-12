@@ -28,11 +28,24 @@
 ![image](https://github.com/TomWia9/PWCHO-S1/assets/43671686/25cde9e9-50ec-4b04-8fe3-7e85661085e4)
 
 ### 3. Polecenia Docker
-#### a) Zbudowanie opracowanego obrazu kontenera:
-#### b) Uruchomienie kontenera na podstawie zbudowanego obrazu:
-#### c) Sposób uzyskania informacji, które wygenerował serwer w trakcie uruchamiana kontenera (logi):
-#### d) Sprawdzenie, ile warstw posiada zbudowany obraz:
 
+#### a) Zbudowanie opracowanego obrazu kontenera:
+##### Aby zbudować opracowany obraz kontenera należy przejść do katalogu zawierającego plik Dockerfile i wykonać polecenie:
+  > docker build -t nazwa_obrazu .
+##### Zrzut ekranu z przykładem budowania obrazu:
+  
+#### b) Uruchomienie kontenera na podstawie zbudowanego obrazu:
+##### Aby uruchomić kontener na podstawie zbudowanego obrazu należy wykonać polecenie:
+  > docker run -p port_hosta:port_kontenera nazwa_obrazu
+  
+#### c) Sposób uzyskania informacji, które wygenerował serwer w trakcie uruchamiana kontenera (logi):
+##### Aby uzyskać informacje wygenerowane przez serwer w trakcie uruchamiania kontenera, należy wykonać polecenie:
+  > docker logs nazwa_kontenera
+
+#### d) Sprawdzenie, ile warstw posiada zbudowany obraz:
+##### Aby sprawdzić ile warstw posiada zbudowany obraz, należy wykonać polecenie:
+  > docker history nazwa_obrazu
+  
 ## Zadania nieobowiązkowe:
 
 
